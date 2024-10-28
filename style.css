@@ -1,0 +1,204 @@
+/* Reset default margin and padding */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: url('Images/BACKGROUND_LANGIT.png') no-repeat center center fixed;
+    background-size: cover;
+    color: #333;
+    min-height: 100vh; /* Full height for the body */
+    display: flex; /* Use flexbox to manage layout */
+    flex-direction: column; /* Column layout */
+}
+
+/* Center the main content */
+.container {
+    flex: 1; /* Allow container to expand and fill space */
+    text-align: center;
+    padding: 20px;
+}
+
+/* Navigation styles */
+nav {
+    background-color: #ffffff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #eeeeee;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px; /* Rounded corners for navigation */
+    margin: 20px; /* Margin from page edges */
+}
+
+nav h1 {
+    font-size: 24px; /* Increased font size for better visibility */
+    margin: 0;
+    color: #FF7F00; /* Color for brand consistency */
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #FF7F00;
+}
+
+/* Main content styles */
+.main-content {
+    padding: 20px;
+}
+
+/* Air quality section */
+.air-quality {
+    background-color: #FFDFBA;
+    margin: 30px auto;
+    padding: 15px;
+    border-radius: 10px;
+    width: 80%; /* Make it more responsive */
+    max-width: 800px; /* Limit the maximum width */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.air-quality h2 {
+    font-size: 24px;
+    color: #FF7F00;
+}
+
+/* Data cards for displaying information */
+.data-cards {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.card {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 150px;
+    margin: 10px;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card p {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.card span {
+    display: block;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+/* History page styles */
+.history-page {
+    background-color: #FFEFDA;
+    padding: 40px;
+    margin-top: 40px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.history-page h2 {
+    font-size: 22px;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+/* Table styles */
+table {
+    width: 90%; /* Adjusted for better responsiveness */
+    margin: 0 auto;
+    border-collapse: collapse;
+    background: #ffffff;
+    border-radius: 10px;
+    overflow: hidden; /* Ensure table corners are rounded */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #dddddd;
+    text-align: center;
+}
+
+th {
+    background: #FFDFBA;
+    color: #333;
+}
+
+/* Pagination styles */
+.pagination {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.pagination button {
+    padding: 8px 12px;
+    margin: 5px;
+    border: none;
+    background-color: #FF7F00;
+    color: #ffffff;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.pagination button:hover {
+    background-color: #e66c00;
+}
+
+/* Footer styles */
+footer {
+    text-align: center;
+    padding: 5px; /* Reduced padding for a smaller footer */
+    font-size: 10px; /* Decreased font size for better fit */
+    color: #666; /* Text color */
+    position: fixed; /* Fixed position at the bottom */
+    left: 0; /* Align left */
+    right: 0; /* Align right */
+    bottom: 0; /* Align bottom */
+    background: transparent; /* No background color */
+    border-top: none; /* Remove the top border */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .data-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        width: 90%; /* Full width on smaller screens */
+    }
+
+    nav {
+        flex-direction: column; /* Stack items vertically on small screens */
+    }
+}
