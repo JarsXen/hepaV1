@@ -1,6 +1,6 @@
 // File: script.js
 
-// Menampilkan waktu real-time
+// Update real-time display
 function updateTime() {
     const timeElement = document.getElementById('real-time');
     const now = new Date();
@@ -10,67 +10,46 @@ function updateTime() {
     timeElement.textContent = `${hours}:${minutes}:${seconds}`;
 }
 
-// Simulasi pembaruan data kualitas udara setiap 2 menit
-function updateAirQualityData() {
-    // Simulasi data baru
-    const coValue = (Math.random() * 2).toFixed(2) + ' ppm'; // Simulasi CO
-    const no2Value = (Math.random() * 20).toFixed(2) + ' ppm'; // Simulasi NO2
-    const pm10Value = (Math.random() * 150).toFixed(2) + ' mg/m3'; // Simulasi PM10
+// Display greeting based on the time of day
+function updateGreeting() {
+    const greetingElement = document.getElementById('greeting');
+    const now = new Date();
+    const hour = now.getHours();
+    let greetingText;
 
-    // Update nilai di UI
-    document.getElementById('co-value').textContent = coValue;
-    document.getElementById('no2-value').textContent = no2Value;
-    document.getElementById('pm10-value').textContent = pm10Value;
-
-    // Update status kualitas udara
-    const airQualityStatus = document.getElementById('air-quality-status');
-    const activityAdvice = document.getElementById('activity-advice');
-
-    if (parseFloat(coValue) > 1.0 || parseFloat(no2Value) > 10.0 || parseFloat(pm10Value) > 100.0) {
-        airQualityStatus.textContent = 'Kualitas Udara Tidak Sehat';
-        activityAdvice.textContent = 'Kurangi aktivitas fisik yang terlalu lama dan berat';
+    if (hour >= 5 && hour < 12) {
+        greetingText = 'Selamat Pagi';
+    } else if (hour >= 12 && hour < 15) {
+        greetingText = 'Selamat Siang';
+    } else if (hour >= 15 && hour < 18) {
+        greetingText = 'Selamat Sore';
     } else {
-        airQualityStatus.textContent = 'Kualitas Udara Sehat';
-        activityAdvice.textContent = 'Aktivitas fisik normal diperbolehkan';
+        greetingText = 'Selamat Malam';
     }
+
+    greetingElement.textContent = greetingText;
 }
 
-// Fungsi navigasi antara halaman Home dan History
+// Initialize data and page events
 document.addEventListener('DOMContentLoaded', () => {
-    // Jalankan fungsi updateTime setiap detik
+    updateGreeting();
+    updateTime();
     setInterval(updateTime, 1000);
-    
-    // Jalankan fungsi updateAirQualityData setiap 2 menit (120000 ms)
-    setInterval(updateAirQualityData, 120000);
-    updateAirQualityData(); // Update data saat halaman dimuat
 
     const homeLink = document.getElementById('home-link');
     const historyLink = document.getElementById('history-link');
-
     const mainContent = document.getElementById('main-content');
     const historyPage = document.getElementById('history-page');
 
-    // Default tampilkan halaman Home
-    mainContent.style.display = 'block';
-    historyPage.style.display = 'none';
-
     homeLink.addEventListener('click', (e) => {
-        e.preventDefault(); // Mencegah perilaku default link
-        showHomePage();
+        e.preventDefault();
+        mainContent.style.display = 'block';
+        historyPage.style.display = 'none';
     });
 
     historyLink.addEventListener('click', (e) => {
-        e.preventDefault(); // Mencegah perilaku default link
-        showHistoryPage();
-    });
-
-    function showHomePage() {
-        mainContent.style.display = 'block';
-        historyPage.style.display = 'none';
-    }
-
-    function showHistoryPage() {
+        e.preventDefault();
         mainContent.style.display = 'none';
         historyPage.style.display = 'block';
-    }
+    });
 });
